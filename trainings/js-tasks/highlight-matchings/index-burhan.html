@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .container-div {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #search-input {
+        width: 250px;
+        height: 30px;
+    }
+
+    #search-result {
+        margin-top: 20px;
+        width: 250px;
+    }
+
+</style>
+
+<body>
+
+    <div class="container-div">
+        <input type="text" id="search-input" onkeypress="filterAndHighlightResult(event)">
+        <ul id="search-result"></ul>
+    </div>
+
+
+    <script>
+        //  filter and heiglight the matching text.
+        //  if input is
+        //  sof
+        // only i need to see string with and the three words background should be highligted 
+        // "Software developer" => sof should be highlighted
+        //  "SOftware"  => SOf should be highlighted
+        // similar for all
+        var result = ["I am developer", "Software developer", "DEVELOPER", "SOftware", "software"];
+
+        
+        function filterAndHighlightResult(event) {
+            var element = document.getElementById("search-input");
+            console.log(element.value);
+
+            buildResult(result);
+        }
+
+        function buildResult(result) {
+            var element = document.getElementById("search-result");
+            result.forEach((text) => {
+                var liElement = document.createElement("li");
+                liElement.innerText = text;
+                liElement.style.listStyleType = "none";
+                liElement.style.marginTop = "10px";
+                element.appendChild(liElement);
+            });
+        }
+        buildResult(result);
+
+
+
+    </script>
+</body>
+
+</html>
